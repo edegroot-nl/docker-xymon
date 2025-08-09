@@ -1,1 +1,1 @@
-docker build . -t edegroot/xymon
+docker build . -t name
