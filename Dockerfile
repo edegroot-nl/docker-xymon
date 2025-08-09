@@ -51,8 +51,8 @@ RUN mkdir -p /var/log/xymon/ \
   && ln -sf /dev/stderr /var/log/apache2/access.log \
   && ln -sf /dev/stderr /var/log/apache2/error.log \
   && ln -sf /dev/stderr /var/log/xymon/xymonnetagain.log \
-  && chown -R xymon /var/log/xymon
-  && chmod 777 -R /var/lib/xymon/*
+  && chown -R xymon /var/log/xymon \
+  && chown -R xymon /var/lib/xymon
 
 VOLUME /etc/xymon /var/lib/xymon
 EXPOSE 80 1984
