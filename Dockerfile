@@ -12,7 +12,7 @@ RUN apt-get update && apt-get upgrade -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Get the 'dumb init' package for proper 'init' behavior
-RUN curl -L https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_amd64.deb > dumb-init.deb && \
+RUN curl -L https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_arm64.deb > dumb-init.deb && \
     dpkg -i dumb-init.deb && \
     rm dumb-init.deb
 
@@ -52,6 +52,7 @@ RUN mkdir -p /var/log/xymon/ \
   && ln -sf /dev/stderr /var/log/apache2/error.log \
   && ln -sf /dev/stderr /var/log/xymon/xymonnetagain.log \
   && chown -R xymon /var/log/xymon
+  && chmod 777 -R /var/lib/xymon/*
 
 VOLUME /etc/xymon /var/lib/xymon
 EXPOSE 80 1984
