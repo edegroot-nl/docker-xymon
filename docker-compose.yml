@@ -1,25 +1,25 @@
 services:
   xymon:
-    image: edegroot/my-own-xymon-build
-  restart: always
-  container_name: "xymon"
-  hostname: hostname
-  ports:
-     - 1984:1984
-   volumes:
-     - ./xymon-config:/etc/xymon
-     - ./xymon-data:/var/lib/xymon
-     - ./xymon-default:/etc/default
-     - "/etc/timezone:/etc/timezone:ro"
-     - "/etc/localtime:/etc/localtime:ro"
-   environment:
-     SSMTP_mailhub: mail.docker.lan
-     SSMTP_AuthUser: user
-     SSMTP_AuthPass: password
-     SSMTP_AuthMethod: LOGIN
-     SSMTP_UseTLS: "Yes"
-     TZ: Europe/Amsterdam
-  networks:
+    image: image
+    restart: always
+    container_name: "xymon"
+    hostname: hostname
+    ports:
+      - 1984:1984
+    volumes:
+      - ./xymon-config:/etc/xymon
+      - ./xymon-data:/var/lib/xymon
+      - ./xymon-default:/etc/default
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      SSMTP_mailhub: mail.docker.lan
+      SSMTP_AuthUser: user
+      SSMTP_AuthPass: password
+      SSMTP_AuthMethod: LOGIN
+      SSMTP_UseTLS: "Yes"
+      TZ: Europe/Amsterdam
+    networks:
       name:
         ipv4_address: ipv4_address
         ipv6_address: ipv6_address
